@@ -65,6 +65,7 @@ class _PointSet(DataSet):
     This holds methods common to PolyData and UnstructuredGrid.
     """
 
+    # TODO: can we put the vtkhdf writer here?
     _WRITERS: ClassVar[dict[str, type[_vtk.vtkSimplePointsWriter]]] = {  # type: ignore[assignment]
         '.xyz': _vtk.vtkSimplePointsWriter,
     }
@@ -738,6 +739,7 @@ class PolyData(_PointSet, PolyDataFilters, _vtk.vtkPolyData):
                     | _vtk.vtkHoudiniPolyDataWriter
                     | _vtk.vtkOBJWriter
                     | _vtk.vtkIVWriter
+                    | _vtk.vtkHDFWriter
                 ]
             ),
         ]
@@ -749,6 +751,7 @@ class PolyData(_PointSet, PolyDataFilters, _vtk.vtkPolyData):
         '.geo': _vtk.vtkHoudiniPolyDataWriter,
         '.obj': _vtk.vtkOBJWriter,
         '.iv': _vtk.vtkIVWriter,
+        '.vtkhdf': _vtk.vtkHDFWriter,
     }
 
     def __init__(
@@ -1810,11 +1813,12 @@ class UnstructuredGrid(PointGrid, UnstructuredGridFilters, _vtk.vtkUnstructuredG
     _WRITERS: ClassVar[
         dict[
             str,
-            type[_vtk.vtkXMLUnstructuredGridWriter | _vtk.vtkUnstructuredGridWriter],
+            type[_vtk.vtkXMLUnstructuredGridWriter | _vtk.vtkUnstructuredGridWriter | _vtk.vtkHDFWriter],
         ]
     ] = {  # type: ignore[assignment]
         '.vtu': _vtk.vtkXMLUnstructuredGridWriter,
         '.vtk': _vtk.vtkUnstructuredGridWriter,
+        '.vtkh': _vtk.vtkHDFWriter,
     }
 
     def __init__(self, *args, deep: bool = False, **kwargs) -> None:
