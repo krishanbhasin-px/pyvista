@@ -123,6 +123,7 @@ class MultiBlock(
     plot = pyvista._plot.plot
 
     _WRITERS = dict.fromkeys(['.vtm', '.vtmb'], _vtk.vtkXMLMultiBlockDataWriter)
+    _WRITERS.update({".vtkhdf": _vtk.vtkHDFWriter})
 
     def __init__(self, *args, **kwargs) -> None:
         """Initialize multi block."""
