@@ -21,7 +21,6 @@ from .utilities.arrays import FieldAssociation
 from .utilities.arrays import _JSONValueType
 from .utilities.arrays import _SerializedDictArray
 from .utilities.fileio import PICKLE_EXT
-from .utilities.fileio import _VTKWriterAlias
 from .utilities.fileio import read
 from .utilities.fileio import save_pickle
 from .utilities.fileio import set_vtkwriter_mode
@@ -30,6 +29,7 @@ from .utilities.misc import abstract_class
 
 if TYPE_CHECKING:  # pragma: no cover
     from ._typing_core import NumpyArray
+    from .utilities.fileio import _VTKWriterAlias
 
 # vector array names
 DEFAULT_VECTOR_KEY = '_vectors'
