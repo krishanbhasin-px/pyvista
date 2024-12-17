@@ -52,7 +52,7 @@ if TYPE_CHECKING:  # pragma: no cover
     from ._typing_core import NumpyArray
     from ._typing_core import VectorLike
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     _PolyDataWriterAlias = Union[
         _vtk.vtkPLYWriter,
         _vtk.vtkXMLPolyDataWriter,
@@ -76,7 +76,7 @@ else:
     if hasattr(_vtk, 'vtkHDFWriter'):
         _PolyDataWriterAlias = Union[_PolyDataWriterAlias, _vtk.vtkHDFWriter]
 
-if TYPE_CHECKING:
+if TYPE_CHECKING:  # pragma: no cover
     _UnstructuredGridWriterAlias = Union[
         _vtk.vtkXMLUnstructuredGridWriter, _vtk.vtkUnstructuredGridWriter, _vtk.vtkHDFWriter
     ]
